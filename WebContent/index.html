@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>PermapocalypseNow - Les jeux de Bebel</title>
+		<link rel="shortcut icon" href="app/img/favicon.jpg" />
+		<link rel="apple-touch-icon" href="app/img/favicon.jpg" />
+		<link rel="icon" type="image/ jpeg" href="app/img/favicon.jpg" />
+		<meta property="og:image" content="app/img/favicon.jpg" />
+		
+		<meta name="title" content="PermapocalypseNow - Les jeux de Bebel"/>
+		<meta property="og:title" content="PermapocalypseNow - Les jeux de Bebel">
+		
+		<meta name="description" content="PermapocalypseNow - Jeu de gestion/shooter gratuit sur navigateur."/>
+		<meta property="og:description" content="PermapocalypseNow - Jeu de gestion/shooter gratuit sur navigateur.">
+		<meta name="keywords" content="Permapocalypse;PermapocalypseNow; Les jeux de Bebel; Jeu; Game; Bebel; Independant; Indies; Fun; A.E Ferrets; AEFerrets; Nesztler; Shooter; Gestion; Perma; Zombie;"/>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Cache-Control" content="private" />
+		<meta http-equiv="Expires" content="86400000" />
+		<meta http-equiv="Cache-Control" content="max-age=86400000" />
+		
+		<script src="lib/require.min.js"></script>
+		<link rel="stylesheet" href="app/css/style.css">
+	</head>
+	<body>
+		<div class="app-container">
+			<script>
+			try {	
+			    require.config({
+	                waitSeconds : 60,
+	                baseUrl: "",
+	                paths: {
+	                    "jquery": "lib/jquery-3.1.1.min",
+	                    "underscore": "lib/underscore.min",
+	                    "text": "lib/text.min",
+	                    "sha": "lib/js-sha256.min",
+	                    "kongregate": "lib/kongregate",
+	                    Phaser: "lib/phaser"
+	                },
+	                urlArgs: "version=" + (new Date()).getTime()
+	            });
+			    
+				require(['app/view/mainView', "Phaser"], function (main, Phaser) {
+				    new main(Phaser);
+				});
+			} catch (error) {
+				location.reload();
+			}
+			</script>
+		</div>
+		<a class="hidden" href="honeybot" title="Lien pour Robot">Lien pour Robot</a>
+	</body>
+</html>
