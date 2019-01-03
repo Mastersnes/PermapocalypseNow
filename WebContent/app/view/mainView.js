@@ -36,23 +36,36 @@ function($, Utils, Tileset, Tilemap) {
 		this.create = function(scene) {
 			var camera = scene.cameras.main;
 			
-			var layers = Tilemap.list();
-			for (var layerId=0; layerId < layers.length; layerId++) {
-				var layer = Tilemap.get(layerId);
-				var x = 0;
-				var y = 0;
-				for (var tileIndex=0; tileIndex < layer.data.length; tileIndex++) {
-					var tileId = layer.data[tileIndex];
-					var tile = Tileset.get(tileId-1);
-					this.renderTile(scene, x, y, tile);
-					
-					x += Tileset.width();
-					if (tileIndex % layer.width == 0) {
-						x = 0;
-						y += Tileset.height();
-					}
-				}
-			}
+//			var layers = Tilemap.list();
+//			for (var layerId=0; layerId < layers.length; layerId++) {
+//				var layer = Tilemap.get(layerId);
+//				var x = 0;
+//				var y = 0;
+//				for (var tileIndex=0; tileIndex < layer.data.length; tileIndex++) {
+//					var tileId = layer.data[tileIndex];
+//					var tile = Tileset.get(tileId-1);
+//					this.renderTile(scene, x, y, tile);
+//					
+//					x += Tileset.width();
+//					if (tileIndex % layer.width == 0) {
+//						x = 0;
+//						y += Tileset.height();
+//					}
+//				}
+//			}
+			
+			var decalageX = 10;
+			var decalageY = 12;
+			var w = 198; var h = 112;
+			
+			scene.add.image(0, 0, "herbe");
+			var iso = Utils.cartesianToIso(w/2 + decalageX, decalageX);
+			scene.add.image(iso.x, iso.y, "herbe");
+			iso = Utils.cartesianToIso(decalageY/2, h - (decalageY/2));
+			scene.add.image(iso.x, iso.y, "herbe");
+			
+//			scene.add.image(0, 0, "herbe");
+//			scene.add.image(196, 0, "herbe2");
 			
 			this.cursor = scene.input.keyboard.createCursorKeys();
 //			camera.setZoom(0.5);
@@ -61,7 +74,7 @@ function($, Utils, Tileset, Tilemap) {
 		this.renderTile = function (scene, x, y, tile) {
 			if (!tile) return;
 			var iso = Utils.cartesianToIso(x, y);
-			scene.add.image(iso.x, iso.y, tile.image);
+//			scene.add.image(iso.x, iso.y, tile.image);
 		};
 		
 		this.update = function(scene) {
