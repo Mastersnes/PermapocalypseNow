@@ -54,14 +54,16 @@ function($, Utils, Tileset, Tilemap) {
 //				}
 //			}
 			
-			var decalageX = 10;
-			var decalageY = 12;
-			var w = 198; var h = 112;
+			var decalageX = 16;
+			var decalageY = 10;
+			var w = 196; var h = 112;
 			
 			scene.add.image(0, 0, "herbe");
-			var iso = Utils.cartesianToIso(w/2 + decalageX, decalageX);
+			var iso = Utils.cartesianToIso((w + decalageX)/2, decalageX/2);
+			console.log("x", iso.x, iso.y);
 			scene.add.image(iso.x, iso.y, "herbe");
-			iso = Utils.cartesianToIso(decalageY/2, h - (decalageY/2));
+			iso = Utils.cartesianToIso(decalageY/2, h - decalageY);
+			console.log("y", iso.x, iso.y);
 			scene.add.image(iso.x, iso.y, "herbe");
 			
 //			scene.add.image(0, 0, "herbe");
