@@ -4,7 +4,6 @@ define(["app/utils/utils"], function(Utils){
         renderTile : function(scene, x, y, tileset, id) {
 			var tile = tileset.get(id);
 			if (!tile) return;
-			console.log("render", tile);
 
 			var w = tile.w!=undefined ? tile.w : tileset.w();
 			var h = tile.h!=undefined ? tile.h : tileset.h();

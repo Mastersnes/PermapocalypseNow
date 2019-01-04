@@ -23,7 +23,8 @@ function(SceneManager, Herbes) {
         };
 
         this.initData = function(scene, data) {
-            console.log(data.plop);
+            console.log(scene, data);
+            if (data) console.log(data.plop);
         };
 
 		this.preload = function(scene) {
@@ -32,13 +33,19 @@ function(SceneManager, Herbes) {
 		};
 
         this.create = function(scene) {
-            console.log("Welcome in menu");
         	this.controls = scene.input.keyboard.createCursorKeys();
 
             SceneManager.renderTile(scene, 0, 0, Herbes, 0);
             SceneManager.renderTile(scene, 1, 0, Herbes, 1);
             SceneManager.renderTile(scene, 0, 1, Herbes, 0);
+
+            scene.events.on('shutdown', this.shutdown, this);
         };
+
+        this.shutdown = function() {
+            var scene = this.scene;
+            scene.input.keyboard.shutdown();
+        }
 
         this.update = function(scene) {
         	var game = scene.game;
@@ -47,7 +54,6 @@ function(SceneManager, Herbes) {
             SceneManager.keyboardCamera(controls, scene);
 
         	if (controls.space.isDown) {
-        	    console.log("switch to game");
                 scene.scene.switch("game", {test:"MEUH"});
 			}
         };

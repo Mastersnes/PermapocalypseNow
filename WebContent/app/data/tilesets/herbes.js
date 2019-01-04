@@ -36,7 +36,6 @@ define([], function(){
 		load : function(scene) {
 			for (var id in data) {
 				var tile = data[id];
-				console.log("load", tile.name, tile.image, scene);
                 scene.load.image(tile.name, tile.image);
 			}
 		}
