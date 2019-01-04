@@ -106,17 +106,11 @@ define(["jquery", "sha"], function($, sha){
             	console.log("Erreur lors du toggle fullscreen");
             }
         },
-        cartesianToIso : function(x, y) {
-        	return {
-        		x : x - y,
-        		y : (x + y) * 0.5
-        	};
-        },
-        isoToCartesian : function(x, y) {
-        	return {
-        		x : (2 * y + x) * 0.5,
-        		y : (2 * y - x) * 0.5
-        	};
+        cartesianToIso : function(x, y, w, h) {
+            return  {
+                x: (w/2)*(x-y),
+                y: (h/2)*(x+y)
+            };
         }
 	};
 });
