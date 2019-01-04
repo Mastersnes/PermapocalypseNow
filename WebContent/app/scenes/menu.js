@@ -5,10 +5,11 @@ function(SceneManager, Herbes) {
 
 	return function(Phaser) {
 		this.init = function(Phaser) {
-			var that = this;
+		    var that = this;
 			this.scene = new Phaser.Class({
                 Extends: Phaser.Scene,
                 initialize: function() {that.initialize(this);},
+                init : function(data) {that.initData(this, data);},
                 preload: function() {that.preload(this);},
                 create: function() {that.create(this);},
                 update: function() {that.update(this);},
@@ -17,7 +18,12 @@ function(SceneManager, Herbes) {
 		};
 
         this.initialize = function(scene) {
+            this.scene = scene;
             Phaser.Scene.call(scene, { key: 'menu' });
+        };
+
+        this.initData = function(scene, data) {
+            console.log(data.plop);
         };
 
 		this.preload = function(scene) {
@@ -41,8 +47,8 @@ function(SceneManager, Herbes) {
             SceneManager.keyboardCamera(controls, scene);
 
         	if (controls.space.isDown) {
-				game.scene.stop("menu");
-                game.scene.start("game");
+        	    console.log("switch to game");
+                scene.scene.switch("game", {test:"MEUH"});
 			}
         };
 
