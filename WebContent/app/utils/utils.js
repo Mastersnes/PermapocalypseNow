@@ -109,7 +109,14 @@ define(["jquery", "sha"], function($, sha){
         cartesianToIso : function(x, y, w, h) {
             return  {
                 x: (w/2)*(x-y),
-                y: (h/2)*(x+y)
+                y: h*((x+y)/2)
+            };
+        },
+        // A voir
+        isoToCartesian : function(x, y, w, h) {
+            return  {
+                x: (w/2)*((2 * y + x) / 2),
+                y: h*((2 * y - x)/2)
             };
         }
 	};

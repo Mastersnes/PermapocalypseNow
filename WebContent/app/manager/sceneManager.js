@@ -9,7 +9,7 @@ define(["app/utils/utils"], function(Utils){
 			var h = tile.h!=undefined ? tile.h : tileset.h();
 			var H = tile.H!=undefined ? tile.H : tileset.H();
 
-			var iso = Utils.cartesianToIso(x, y, w, H-h);
+			var iso = Utils.cartesianToIso(x, y, w, h);
 			scene.add.image(iso.x, iso.y, tile.name);
     	},
         keyboardCamera : function(controls, scene, speed) {
@@ -19,6 +19,20 @@ define(["app/utils/utils"], function(Utils){
         	if (controls.down.isDown) camera.scrollY+=speed;
         	if (controls.left.isDown) camera.scrollX-=speed;
         	if (controls.right.isDown) camera.scrollX+=speed;
+		},
+        mouseZoom : function(direction, scene) {
+        	var camera = scene.cameras.main;
+        	var speed = 0.1;
+        	var zoomChange = false;
+        	if (this.direction == 'UP') {
+        		zoomChange = true;
+        		scene.zoom+=speed;
+        	}else if (this.direction == 'DOWN') {
+        		zoomChange = true;
+        		scene.zoom-=speed;        		
+        	}
+        	
+        	if (zoomChange) camera.setZoom(scene.zoom);
 		}
 	};
 });

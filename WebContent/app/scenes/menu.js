@@ -9,7 +9,6 @@ function(SceneManager, Herbes) {
 			this.scene = new Phaser.Class({
                 Extends: Phaser.Scene,
                 initialize: function() {that.initialize(this);},
-                init : function(data) {that.initData(this, data);},
                 preload: function() {that.preload(this);},
                 create: function() {that.create(this);},
                 update: function() {that.update(this);},
@@ -23,8 +22,6 @@ function(SceneManager, Herbes) {
         };
 
         this.initData = function(scene, data) {
-            console.log(scene, data);
-            if (data) console.log(data.plop);
         };
 
 		this.preload = function(scene) {
@@ -35,17 +32,15 @@ function(SceneManager, Herbes) {
         this.create = function(scene) {
         	this.controls = scene.input.keyboard.createCursorKeys();
 
-            SceneManager.renderTile(scene, 0, 0, Herbes, 0);
-            SceneManager.renderTile(scene, 1, 0, Herbes, 1);
-            SceneManager.renderTile(scene, 0, 1, Herbes, 0);
-
+        	SceneManager.renderTile(scene, 0, 0, Herbes, 0);
+            
             scene.events.on('shutdown', this.shutdown, this);
         };
 
         this.shutdown = function() {
             var scene = this.scene;
             scene.input.keyboard.shutdown();
-        }
+        };
 
         this.update = function(scene) {
         	var game = scene.game;
@@ -53,9 +48,11 @@ function(SceneManager, Herbes) {
 
             SceneManager.keyboardCamera(controls, scene);
 
-        	if (controls.space.isDown) {
-                scene.scene.switch("game", {test:"MEUH"});
+        	if (controls.space.isDown && !this.delaySpace) {
+                scene.scene.switch("game");
+                this.delaySpace = 50;
 			}
+        	if (this.delaySpace) this.delaySpace--;
         };
 
         this.render = function(scene) {
