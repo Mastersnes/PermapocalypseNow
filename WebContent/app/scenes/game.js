@@ -1,12 +1,17 @@
 /*global define */
-define(["app/manager/sceneManager", "app/data/tilesets/herbes",
-        "app/data/tilemap"],
-function(SceneManager, Herbes, Tilemap) {
+define(["jquery", "app/manager/sceneManager",
+        "app/data/tilemap",
+
+
+        , "jquery-scroll"],
+function($, SceneManager, Tilemap) {
 	'use strict';
 
 	return function(Phaser) {
 		this.init = function(Phaser) {
-			var that = this;
+		    this.sceneManager = new SceneManager();
+
+		    var that = this;
 			this.scene = new Phaser.Class({
                 Extends: Phaser.Scene,
                 initialize: function() {that.initialize(this);},
@@ -23,66 +28,54 @@ function(SceneManager, Herbes, Tilemap) {
         };
 
 		this.preload = function(scene) {
-			scene.zoom = 1;
+            var camera = scene.cameras.main;
+
             scene.load.setBaseURL('app/img/');
-            Herbes.load(scene);
+            Tilemap.load(scene);
+
+            scene.zoom = 0.5;
+            camera.setZoom(scene.zoom);
 		};
 
         this.create = function(scene) {
-        	var camera = scene.cameras.main;
-            this.controls = scene.input.keyboard.createCursorKeys();
-            
-            for (var layerId in Tilemap.list()) {
-            	var layer = Tilemap.get(layerId);
-            	var x = 0;
-            	var y = 0;
-            	for (var tileId in layer.data) {
-            		var tile = layer.data[tileId];
-            		
-            		SceneManager.renderTile(scene, x, y, Herbes, tile);
-            		
-            		x++;
-            		if (x>layer.width) {
-            			x=0;
-            			y++;
-            		}
-            	}
-            }
-            
-            camera.setZoom(scene.zoom);
-            
-            scene.events.on('shutdown', this.shutdown, this);
-            scene.input.mouse.mouseWheelCallback = this.mouseWheel;
-            
-            console.log("scroll :", scene.input.mouse);
-            console.log("scrollWheel :", scene.input.mouse.mouseWheelCallback);
-            
-            this.direction = null;
+            this.sceneManager.renderMap(scene, Tilemap);
+
+            this.makeEvents();
         };
+
+        this.makeEvents = function() {
+            var that = this;
+            var scene = this.scene;
+            var camera = scene.cameras.main;
+            this.controls = scene.input.keyboard.createCursorKeys();
+
+            scene.events.on('shutdown', this.shutdown, this);
+
+            scene.input.on('pointermove', function (pointer) {
+                that.mouse = pointer;
+            }, this);
+
+            $("canvas").on('mousewheel', function(event) {
+                scene.zoom += event.deltaY * 0.1;
+                if (event.deltaY > 0)
+                    camera.centerOn(event.offsetX + camera.scrollX, event.offsetY + camera.scrollY);
+                camera.setZoom(scene.zoom);
+            });
+        }
 
         this.shutdown = function() {
             var scene = this.scene;
             scene.input.keyboard.shutdown();
+            scene.input.mouse.shutdown();
         };
         
-        this.mouseWheel = function(event) {
-        	console.log("mouseWheel", event);
-        	var scene = this.scene;
-        	if(scene.input.mouse.wheelDelta === Phaser.Mouse.WHEEL_UP) this.direction = 'UP';
-        	else this.direction = 'DOWN';
-        };
-
         this.update = function(scene) {
-            var game = scene.game;
             var controls = this.controls;
 
-            SceneManager.keyboardCamera(controls, scene);
-
-            if (controls.space.isDown && !this.delaySpace) {
+            this.sceneManager.keyboardCamera(controls, scene);
+            this.sceneManager.isDown(controls, scene, "space", function() {
                 scene.scene.switch("menu");
-                this.delaySpace = 50;
-			}
-        	if (this.delaySpace) this.delaySpace--;
+            });
         };
         
         this.render = function(scene) {

@@ -29,6 +29,7 @@
 	                baseUrl: "",
 	                paths: {
 	                    "jquery": "lib/jquery-3.1.1.min",
+	                    "jquery-scroll": "lib/jquery.mousewheel.min",
 	                    "underscore": "lib/underscore.min",
 	                    "text": "lib/text.min",
 	                    "sha": "lib/js-sha256.min",
@@ -38,8 +39,10 @@
 	                urlArgs: "version=" + (new Date()).getTime()
 	            });
 			    
-				require(['app/view/mainView', "Phaser"], function (main, Phaser) {
-				    new main(Phaser);
+				require(["jquery", 'app/view/mainView', "Phaser"], function ($, main, Phaser) {
+                    $(document).ready(function() {
+                        new main(Phaser);
+                    });
 				});
 			} catch (error) {
 				location.reload();

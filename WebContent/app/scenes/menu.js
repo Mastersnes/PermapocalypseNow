@@ -1,10 +1,11 @@
 /*global define */
-define(["app/manager/sceneManager", "app/data/tilesets/herbes"],
-function(SceneManager, Herbes) {
+define(["app/manager/sceneManager"],
+function(SceneManager) {
 	'use strict';
 
 	return function(Phaser) {
 		this.init = function(Phaser) {
+		    this.sceneManager = new SceneManager();
 		    var that = this;
 			this.scene = new Phaser.Class({
                 Extends: Phaser.Scene,
@@ -26,14 +27,11 @@ function(SceneManager, Herbes) {
 
 		this.preload = function(scene) {
             scene.load.setBaseURL('app/img/');
-            Herbes.load(scene);
 		};
 
         this.create = function(scene) {
         	this.controls = scene.input.keyboard.createCursorKeys();
 
-        	SceneManager.renderTile(scene, 0, 0, Herbes, 0);
-            
             scene.events.on('shutdown', this.shutdown, this);
         };
 
@@ -46,13 +44,11 @@ function(SceneManager, Herbes) {
         	var game = scene.game;
 			var controls = this.controls;
 
-            SceneManager.keyboardCamera(controls, scene);
+            this.sceneManager.keyboardCamera(controls, scene);
 
-        	if (controls.space.isDown && !this.delaySpace) {
+            this.sceneManager.isDown(controls, scene, "space", function() {
                 scene.scene.switch("game");
-                this.delaySpace = 50;
-			}
-        	if (this.delaySpace) this.delaySpace--;
+            });
         };
 
         this.render = function(scene) {
