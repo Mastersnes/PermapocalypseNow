@@ -2,6 +2,7 @@
 define([], function(){
 	var data = [
             {
+                "id" : 0,
             	"name" : "rocher1",
              	"image":"game/tiles/elements/rocher/rocher1.png",
             },
@@ -9,7 +10,11 @@ define([], function(){
 	
 	return {
 		get : function(key) {
-			return data[key];
+            for (var id in data) {
+                var tile = data[id];
+                if (tile.id == key) return tile;
+            }
+            return null;
 		},
 		list : function() {
 			return data;

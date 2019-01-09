@@ -20,8 +20,8 @@ define(["app/utils/utils"],
              * @param id
              */
             this.renderTile = function(scene, x, y, Tilemap, id) {
-                var flipH = id & this.FLIP_H_FLAG != 0;
-                var flipV = id & this.FLIP_V_FLAG != 0;
+                var flipH = (id & this.FLIP_H_FLAG) != 0;
+                var flipV = (id & this.FLIP_V_FLAG) != 0;
                 // var flipD = id & this.FLIP_D_FLAG != 0;
 
                 id &= ~(this.FLIP_H_FLAG | this.FLIP_V_FLAG | this.FLIP_D_FLAG);
@@ -31,14 +31,12 @@ define(["app/utils/utils"],
 
                 var w = tile.w!=undefined ? tile.w : Tilemap.w();
                 var h = tile.h!=undefined ? tile.h : Tilemap.h();
-                var H = tile.H!=undefined ? tile.H : Tilemap.H();
 
                 var iso = Utils.cartesianToIso(x, y, w/2, h);
                 var image = scene.add.image(iso.x, iso.y, tile.name);
 
                 image.flipX = flipH;
                 image.flipY = flipV;
-
             };
 
             /**
@@ -52,6 +50,7 @@ define(["app/utils/utils"],
             	for (var layerId in map) {
                     var layer = map[layerId];
                     var x = 0; var y = 0;
+
                     for (var tileId in layer.data) {
                         var tile = layer.data[tileId];
 
@@ -59,7 +58,7 @@ define(["app/utils/utils"],
                             this.renderTile(scene, x, y, Tilemap, tile);
 
                         x++;
-                        if (x>layer.width) {
+                        if (x>=layer.width) {
                             x=0; y++;
                         }
                     }
