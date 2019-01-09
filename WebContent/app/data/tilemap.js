@@ -120,6 +120,13 @@ define(["app/data/tilesets"], function(Tilesets){
             return previousTileset;
         },
 
+        width : function() {
+            return layers[0].width;
+        },
+        height : function() {
+            return layers[0].data / layers[0].width;
+        },
+
         /**
 		 * Proportions basique des tuiles de la map
          */

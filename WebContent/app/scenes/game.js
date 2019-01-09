@@ -38,6 +38,16 @@ function($, SceneManager, Tilemap) {
 		};
 
         this.create = function(scene) {
+            var camera = scene.cameras.main;
+
+            var world = {
+                w : Tilemap.width() * Tilemap.w(),
+                h : Tilemap.height() * Tilemap.h()
+            };
+
+            camera.setBounds(-world.w/2, -10, world.w, world.h);
+            // scene.physics.world.setBounds(-world.w, -world.h, world.w, world.h);
+
             this.sceneManager.renderMap(scene, Tilemap);
 
             this.makeEvents();
@@ -56,8 +66,12 @@ function($, SceneManager, Tilemap) {
             }, this);
 
             $("canvas").on('mousewheel', function(event) {
-                scene.zoom += event.deltaY * 0.1;
-                if (event.deltaY > 0)
+                scene.zoom += event.deltaY * 0.05;
+                if (scene.zoom > 0.7)
+                    scene.zoom = 0.7;
+                else if (scene.zoom < 0.4)
+                    scene.zoom = 0.4;
+                else if (event.deltaY > 0)
                     camera.centerOn(event.offsetX + camera.scrollX, event.offsetY + camera.scrollY);
                 camera.setZoom(scene.zoom);
             });
