@@ -16,7 +16,13 @@ function(Utils, MenuScene, GameScene) {
 		        type: Phaser.AUTO,
 		        width: 1024,
 		        height: 768,
-                physics: {default: 'arcade'},
+		        physics: {
+			        default: "arcade",
+			        arcade: {
+			            fps: 60,
+			            gravity: {y: 0}
+			        }
+			    },
 		        scene: [menuScene.scene, gameScene.scene]
 		    });
 			this.game.scene.start("menu");

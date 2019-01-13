@@ -1,10 +1,10 @@
 /*global define */
-define(["jquery", "app/manager/sceneManager",
+define(["jquery", "app/utils/utils", "app/manager/sceneManager",
         "app/data/tilemap",
 
 
         , "jquery-scroll"],
-function($, SceneManager, Tilemap) {
+function($, Utils, SceneManager, Tilemap) {
 	'use strict';
 
 	return function(Phaser) {
@@ -17,7 +17,7 @@ function($, SceneManager, Tilemap) {
                 initialize: function() {that.initialize(this);},
                 preload: function() {that.preload(this);},
                 create: function() {that.create(this);},
-                update: function() {that.update(this);},
+                update: function(time, delta) {that.update(this, time, delta);},
                 render: function() {that.render(this);},
 			});
 		};
@@ -32,6 +32,7 @@ function($, SceneManager, Tilemap) {
 
             scene.load.setBaseURL('app/img/');
             Tilemap.load(scene);
+            scene.load.image("hero", "game/personnages/hero.png");
 
             scene.zoom = 0.5;
             camera.setZoom(scene.zoom);
@@ -46,9 +47,10 @@ function($, SceneManager, Tilemap) {
             };
 
             camera.setBounds(-world.w/2, -10, world.w, world.h);
-            // scene.physics.world.setBounds(-world.w, -world.h, world.w, world.h);
 
             this.sceneManager.renderMap(scene, Tilemap);
+            
+            this.hero = scene.physics.add.sprite(-400, 400, "hero");
 
             this.makeEvents();
         };
@@ -58,6 +60,7 @@ function($, SceneManager, Tilemap) {
             var scene = this.scene;
             var camera = scene.cameras.main;
             this.controls = scene.input.keyboard.createCursorKeys();
+            this.zqsd = scene.input.keyboard.addKeys('z,q,s,d');
 
             scene.events.on('shutdown', this.shutdown, this);
 
@@ -75,7 +78,7 @@ function($, SceneManager, Tilemap) {
                     camera.centerOn(event.offsetX + camera.scrollX, event.offsetY + camera.scrollY);
                 camera.setZoom(scene.zoom);
             });
-        }
+        };
 
         this.shutdown = function() {
             var scene = this.scene;
@@ -83,13 +86,18 @@ function($, SceneManager, Tilemap) {
             scene.input.mouse.shutdown();
         };
         
-        this.update = function(scene) {
+        this.update = function(scene, time, delta) {
             var controls = this.controls;
 
-            this.sceneManager.keyboardCamera(controls, scene);
+//          this.sceneManager.moveCarto(controls.up, controls.down, controls.left, controls.right, scene.cameras.main);
             this.sceneManager.isDown(controls, scene, "space", function() {
                 scene.scene.switch("menu");
             });
+            
+            var zqsd = this.zqsd;
+            var speed = 20;
+            var move = this.sceneManager.calculMove(controls.up, controls.down, controls.left, controls.right, speed);
+            this.sceneManager.move(Utils.cartesianToIso(move.x, move.y, speed, speed), this.hero);
         };
         
         this.render = function(scene) {

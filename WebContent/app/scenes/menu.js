@@ -44,8 +44,6 @@ function(SceneManager) {
         	var game = scene.game;
 			var controls = this.controls;
 
-            this.sceneManager.keyboardCamera(controls, scene);
-
             this.sceneManager.isDown(controls, scene, "space", function() {
                 scene.scene.switch("game");
             });

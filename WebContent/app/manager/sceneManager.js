@@ -72,20 +72,39 @@ define(["app/utils/utils"],
                 }
                 if (this.delay[key]) this.delay[key]--;
 			};
-
-            /**
+			
+			/**
              * Permet de controller la camera avec les touches flechées
              * @param controls
              * @param scene
              * @param speed
              */
-            this.keyboardCamera = function(controls, scene, speed) {
-                if (!speed) speed = 4;
-                var camera = scene.cameras.main;
-                if (controls.up.isDown) camera.scrollY-=speed;
-                if (controls.down.isDown) camera.scrollY+=speed;
-                if (controls.left.isDown) camera.scrollX-=speed;
-                if (controls.right.isDown) camera.scrollX+=speed;
+            this.keyboardCamera = function(controls, camera, speed) {
+                this.moveCarto(controls.up, controls.down, controls.left, controls.right, camera, speed);
+            };
+
+            /**
+             * Permet de calculer la nouvelle position d'un  un element avec les touches indiquées
+             * @param up
+             * @param down
+             * @param left
+             * @param right
+             */
+            this.calculMove = function(up, down, left, right, speed) {
+                var incr = {x:0, y:0};
+                if (up.isDown) incr.y-=speed; else if (down.isDown) incr.y+=speed;
+                if (left.isDown) incr.x-=speed; else if (right.isDown) incr.x+=speed;
+                return incr;
+            };
+            
+            /**
+             * Permet de bouger un element
+             */
+            this.move = function(incr, element) {
+                if (element.scrollX != undefined) element.scrollX+=incr.x;
+                else element.setVelocityX(incr.x);
+                if (element.scrollY != undefined) element.scrollY+=incr.y;
+                else element.setVelocityY(incr.y);
             };
 
             this.init();
