@@ -95,7 +95,7 @@ function($, Utils, SceneManager, Tilemap) {
             });
             
             var zqsd = this.zqsd;
-            var speed = 20;
+            var speed = delta;
             var move = this.sceneManager.calculMove(controls.up, controls.down, controls.left, controls.right, speed);
             this.sceneManager.move(Utils.cartesianToIso(move.x, move.y, speed, speed), this.hero);
         };
