@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "cailloux.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 352,
+				"h": 86
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "cailloux3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 24,
+						"w": 120,
+						"h": 84
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 120,
+						"h": 84
+					}
+				},
+				{
+					"filename": "cailloux1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 34,
+						"y": 14,
+						"w": 128,
+						"h": 77
+					},
+					"frame": {
+						"x": 123,
+						"y": 1,
+						"w": 128,
+						"h": 77
+					}
+				},
+				{
+					"filename": "cailloux2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 55,
+						"y": 26,
+						"w": 98,
+						"h": 54
+					},
+					"frame": {
+						"x": 253,
+						"y": 1,
+						"w": 98,
+						"h": 54
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:50e3dbb02f44d8b12753a5f970309f21:b3dd66969e20a94398c78f84a33f05e2:6733c1fb4bfacb8cf0f8406e719d7fbf$"
+	}
+}

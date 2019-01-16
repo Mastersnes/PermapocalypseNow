@@ -35,10 +35,8 @@ define([], function(){
 			return data;
 		},
 		load : function(scene) {
-			for (var id in data) {
-				var tile = data[id];
-                scene.load.image(tile.name, tile.image);
-			}
+            scene.load.setBaseURL('app/img/game/tiles/blocs');
+            scene.load.multiatlas('eau', 'eau/eau.json', 'eau');
 		}
 	};
 });

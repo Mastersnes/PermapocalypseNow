@@ -1,0 +1,41 @@
+{
+	"textures": [
+		{
+			"image": "barriere.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 111,
+				"h": 170
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "barriere1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 195,
+						"h": 223
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 26,
+						"w": 109,
+						"h": 168
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 109,
+						"h": 168
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:e300b87ba49688d375339cf6cd8cb38e:732607ad07f9963437129088026723f8:4d38f1293ad3629dca19cfcbb582b57c$"
+	}
+}

@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "touf.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 244,
+				"h": 81
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "touf1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 21,
+						"w": 111,
+						"h": 79
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 111,
+						"h": 79
+					}
+				},
+				{
+					"filename": "touf2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 26,
+						"w": 129,
+						"h": 66
+					},
+					"frame": {
+						"x": 114,
+						"y": 1,
+						"w": 129,
+						"h": 66
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:07859eed54f902ae46dcfca693b270d5:c21416d7f3a3f0760108a98bfdae685f:3b034f6b863f5cc0c6cb2a5bb7fc9bb7$"
+	}
+}

@@ -3,9 +3,19 @@ define([], function(){
 	var data = [
             {
                 "id" : 0,
-            	"name" : "rocher1",
+            	"name" : "fleurs1",
                 "type":"elements"
             },
+			{
+				"id" : 1,
+				"name" : "fleurs2",
+				"type":"elements"
+			},
+			{
+				"id" : 2,
+				"name" : "fleurs3",
+				"type":"elements"
+			},
 	];
 	
 	return {
@@ -21,7 +31,7 @@ define([], function(){
 		},
 		load : function(scene) {
             scene.load.setBaseURL('app/img/game/tiles/elements');
-            scene.load.multiatlas('rocher', 'rocher/rocher.json', 'rocher');
+            scene.load.multiatlas('fleurs', 'fleurs/fleurs.json', 'fleurs');
 		}
 	};
 });

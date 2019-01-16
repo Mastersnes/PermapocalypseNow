@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "fleurs.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 190,
+				"h": 163
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fleurs3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 1,
+						"w": 156,
+						"h": 91
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 156,
+						"h": 91
+					}
+				},
+				{
+					"filename": "fleurs1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 69,
+						"y": 29,
+						"w": 93,
+						"h": 68
+					},
+					"frame": {
+						"x": 1,
+						"y": 94,
+						"w": 93,
+						"h": 68
+					}
+				},
+				{
+					"filename": "fleurs2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 69,
+						"y": 29,
+						"w": 93,
+						"h": 68
+					},
+					"frame": {
+						"x": 96,
+						"y": 94,
+						"w": 93,
+						"h": 68
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:b38284c6c9f4a0eca788db69b78f1275:0918ee506c0009a40cda4c0c0aa629c7:b1edfd521bfadefa6ef176d38e7f0b46$"
+	}
+}

@@ -20,10 +20,8 @@ define([], function(){
 			return data;
 		},
 		load : function(scene) {
-			for (var id in data) {
-				var tile = data[id];
-                scene.load.image(tile.name, tile.image);
-			}
+            scene.load.setBaseURL('app/img/game/tiles/elements');
+            scene.load.multiatlas('barriere', 'barriere/barriere.json', 'barriere');
 		}
 	};
 });
