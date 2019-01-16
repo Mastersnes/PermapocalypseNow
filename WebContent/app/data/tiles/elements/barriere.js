@@ -4,7 +4,7 @@ define([], function(){
             {
             	"id" : 0,
             	"name" : "barriere1",
-             	"image":"game/tiles/elements/barriere/barriere1.png",
+                "type":"elements"
             },
 	];
 	

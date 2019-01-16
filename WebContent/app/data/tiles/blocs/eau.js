@@ -4,22 +4,22 @@ define([], function(){
             {
                 "id":0,
             	"name" : "eau1",
-             	"image":"game/tiles/blocs/eau/eau1.png",
+             	"type":"blocs"
             },
 			{
                 "id":1,
 				"name" : "eau2",
-				"image":"game/tiles/blocs/eau/eau2.png",
+                "type":"blocs"
 			},
 			{
                 "id":2,
 				"name" : "eau3",
-				"image":"game/tiles/blocs/eau/eau3.png",
+                "type":"blocs"
 			},
 			{
                 "id":3,
 				"name" : "eau4",
-				"image":"game/tiles/blocs/eau/eau4.png",
+                "type":"blocs"
 			},
 	];
 	

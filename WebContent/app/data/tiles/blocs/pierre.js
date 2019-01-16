@@ -4,37 +4,37 @@ define([], function(){
 			{
                 "id":0,
 				"name" : "pierre1",
-				"image":"game/tiles/blocs/pierre/pierre1.png",
+                "type":"blocs"
 			},
 			{
                 "id":1,
 				"name" : "pierre2",
-				"image":"game/tiles/blocs/pierre/pierre2.png",
+                "type":"blocs"
 			},
 			{
                 "id":2,
 				"name" : "pierre3",
-				"image":"game/tiles/blocs/pierre/pierre3.png",
+                "type":"blocs"
 			},
 			{
                 "id":11,
 				"name" : "pierre4",
-				"image":"game/tiles/blocs/pierre/pierre4.png",
+                "type":"blocs"
 			},
 			{
                 "id":12,
 				"name" : "pierre5",
-				"image":"game/tiles/blocs/pierre/pierre5.png",
+                "type":"blocs"
 			},
 			{
                 "id":13,
 				"name" : "pierre6",
-				"image":"game/tiles/blocs/pierre/pierre6.png",
+                "type":"blocs"
 			},
 			{
                 "id":14,
 				"name" : "pierre0",
-				"image":"game/tiles/blocs/pierre/pierre0.png",
+                "type":"blocs"
 			}
 	];
 	

@@ -1,0 +1,230 @@
+{
+	"textures": [
+		{
+			"image": "elements.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 253,
+				"h": 533
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fleurs3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 1,
+						"w": 156,
+						"h": 91
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 156,
+						"h": 91
+					}
+				},
+				{
+					"filename": "fleurs1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 69,
+						"y": 29,
+						"w": 93,
+						"h": 68
+					},
+					"frame": {
+						"x": 159,
+						"y": 1,
+						"w": 93,
+						"h": 68
+					}
+				},
+				{
+					"filename": "fleurs2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 69,
+						"y": 29,
+						"w": 93,
+						"h": 68
+					},
+					"frame": {
+						"x": 159,
+						"y": 71,
+						"w": 93,
+						"h": 68
+					}
+				},
+				{
+					"filename": "rocher1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 268
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 0,
+						"w": 133,
+						"h": 247
+					},
+					"frame": {
+						"x": 1,
+						"y": 94,
+						"w": 133,
+						"h": 247
+					}
+				},
+				{
+					"filename": "touf1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 21,
+						"w": 111,
+						"h": 79
+					},
+					"frame": {
+						"x": 136,
+						"y": 141,
+						"w": 111,
+						"h": 79
+					}
+				},
+				{
+					"filename": "barriere1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 195,
+						"h": 223
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 26,
+						"w": 109,
+						"h": 168
+					},
+					"frame": {
+						"x": 136,
+						"y": 222,
+						"w": 109,
+						"h": 168
+					}
+				},
+				{
+					"filename": "touf2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 26,
+						"w": 129,
+						"h": 66
+					},
+					"frame": {
+						"x": 1,
+						"y": 343,
+						"w": 129,
+						"h": 66
+					}
+				},
+				{
+					"filename": "cailloux3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 24,
+						"w": 120,
+						"h": 84
+					},
+					"frame": {
+						"x": 132,
+						"y": 392,
+						"w": 120,
+						"h": 84
+					}
+				},
+				{
+					"filename": "cailloux1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 34,
+						"y": 14,
+						"w": 128,
+						"h": 77
+					},
+					"frame": {
+						"x": 1,
+						"y": 411,
+						"w": 128,
+						"h": 77
+					}
+				},
+				{
+					"filename": "cailloux2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 55,
+						"y": 26,
+						"w": 98,
+						"h": 54
+					},
+					"frame": {
+						"x": 131,
+						"y": 478,
+						"w": 98,
+						"h": 54
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:d40cc50a2f3aa8e27cc64e8157ac794e:faee22ca2015cebaa919a5a8acf1c5df:5b2f3c13e8b86e4c74f43dc8b276d9b9$"
+	}
+}

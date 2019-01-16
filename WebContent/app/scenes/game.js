@@ -30,9 +30,12 @@ function($, Utils, SceneManager, Tilemap) {
 		this.preload = function(scene) {
             var camera = scene.cameras.main;
 
-            scene.load.setBaseURL('app/img/');
-            Tilemap.load(scene);
-            scene.load.image("hero", "game/personnages/hero.png");
+            scene.load.setBaseURL('app/img/game');
+
+            scene.load.multiatlas('blocs', 'tiles/blocs/blocs.json', 'tiles/blocs');
+            scene.load.multiatlas('elements', 'tiles/elements/elements.json', 'tiles/elements');
+
+            scene.load.image("hero", "personnages/hero.png");
 
             scene.zoom = 0.5;
             camera.setZoom(scene.zoom);

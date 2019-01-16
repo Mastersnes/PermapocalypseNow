@@ -33,7 +33,7 @@ define(["app/utils/utils"],
                 var h = tile.h!=undefined ? tile.h : Tilemap.h();
 
                 var iso = Utils.cartesianToIso(x, y, w/2, h);
-                var image = scene.add.sprite(iso.x, iso.y, tile.name);
+                var image = scene.add.sprite(iso.x, iso.y, tile.type, tile.name + ".png");
 
                 image.flipX = flipH;
                 image.flipY = flipV;

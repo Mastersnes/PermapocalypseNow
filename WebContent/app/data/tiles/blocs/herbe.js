@@ -4,32 +4,32 @@ define([], function(){
             {
                 "id":0,
             	"name" : "herb1",
-             	"image":"game/tiles/blocs/herbe/herb1.png",
+                "type":"blocs"
             },
             {
                 "id":5,
                 "name" : "herb2",
-                "image":"game/tiles/blocs/herbe/herb2.png",
+                "type":"blocs"
             },
             {
                 "id":1,
                 "name" : "herb3",
-                "image":"game/tiles/blocs/herbe/herb3.png",
+                "type":"blocs"
             },
 			{
                 "id":3,
 				"name" : "herb4",
-				"image":"game/tiles/blocs/herbe/herb4.png",
+                "type":"blocs"
 			},
 			{
                 "id":4,
 				"name" : "herb5",
-				"image":"game/tiles/blocs/herbe/herb5.png",
+                "type":"blocs"
 			},
 			{
                 "id":18,
 				"name" : "ter0",
-				"image":"game/tiles/blocs/herbe/ter0.png",
+                "type":"blocs"
 			}
 	];
 	
