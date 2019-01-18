@@ -3,23 +3,19 @@ define([], function(){
 	var data = [
             {
                 "id":0,
-            	"name" : "eau1",
-             	"type":"blocs"
+            	"name" : "eau1"
             },
 			{
                 "id":1,
-				"name" : "eau2",
-                "type":"blocs"
+				"name" : "eau2"
 			},
 			{
                 "id":2,
-				"name" : "eau3",
-                "type":"blocs"
+				"name" : "eau3"
 			},
 			{
                 "id":3,
-				"name" : "eau4",
-                "type":"blocs"
+				"name" : "eau4"
 			},
 	];
 	
@@ -34,9 +30,15 @@ define([], function(){
 		list : function() {
 			return data;
 		},
-		load : function(scene) {
-            scene.load.setBaseURL('app/img/game/tiles/blocs');
-            scene.load.multiatlas('eau', 'eau/eau.json', 'eau');
-		}
+
+        /**
+         * Getters
+         */
+        type : function() {
+		    return "blocs";
+        },
+        name : function() {
+            return "eau";
+        }
 	};
 });

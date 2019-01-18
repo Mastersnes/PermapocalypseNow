@@ -1,40 +1,33 @@
 'use strict';
 define([], function(){
-	var data = [
+    var data = [
 			{
                 "id":0,
 				"name" : "pierre1",
-                "type":"blocs"
 			},
 			{
                 "id":1,
 				"name" : "pierre2",
-                "type":"blocs"
 			},
 			{
                 "id":2,
 				"name" : "pierre3",
-                "type":"blocs"
 			},
 			{
                 "id":11,
 				"name" : "pierre4",
-                "type":"blocs"
 			},
 			{
                 "id":12,
 				"name" : "pierre5",
-                "type":"blocs"
 			},
 			{
                 "id":13,
 				"name" : "pierre6",
-                "type":"blocs"
 			},
 			{
                 "id":14,
 				"name" : "pierre0",
-                "type":"blocs"
 			}
 	];
 	
@@ -49,9 +42,15 @@ define([], function(){
 		list : function() {
 			return data;
 		},
-		load : function(scene) {
-            scene.load.setBaseURL('app/img/game/tiles/blocs');
-            scene.load.multiatlas('pierre', 'pierre/pierre.json', 'pierre');
-		}
+
+        /**
+         * Getters
+         */
+        type : function() {
+            return "blocs";
+        },
+        name : function() {
+            return "pierre";
+        }
 	};
 });

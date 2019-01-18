@@ -1,15 +1,13 @@
 'use strict';
 define([], function(){
-	var data = [
+    var data = [
             {
                 "id" : 0,
             	"name" : "touf1",
-                "type":"elements"
             },
 			{
 				"id" : 1,
 				"name" : "touf2",
-				"type":"elements"
 			},
 	];
 	
@@ -24,9 +22,15 @@ define([], function(){
 		list : function() {
 			return data;
 		},
-		load : function(scene) {
-            scene.load.setBaseURL('app/img/game/tiles/elements');
-            scene.load.multiatlas('touf', 'touf/touf.json', 'touf');
-		}
+
+        /**
+         * Getters
+         */
+        type : function() {
+            return "elements";
+        },
+        name : function() {
+            return "touf";
+        }
 	};
 });

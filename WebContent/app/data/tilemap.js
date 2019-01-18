@@ -1,5 +1,5 @@
 'use strict';
-define(["app/data/tilesets"], function(Tilesets){
+define(["app/data/tilesets", "app/utils/utils"], function(Tilesets, Utils){
 	var layers = [
 		  {
               "name":"sous-sol",
@@ -87,19 +87,34 @@ define(["app/data/tilesets"], function(Tilesets){
 			return layers;
 		},
         load : function(scene) {
-            Tilesets.Herbe().load(scene);
-            Tilesets.Eau().load(scene);
-            Tilesets.Pierre().load(scene);
-            Tilesets.Barriere().load(scene);
-            Tilesets.Rocher().load(scene);
+            for (var id in tilesets) {
+                Tilesets.load(scene, tilesets[id].source);
+            }
         },
+
+        /**
+         * Permet d'afficher la tuile et renvoi le sprite associé
+         * @param scene
+         * @param x
+         * @param y
+         * @param tileId
+         */
+        renderTile : function(group, x, y, tileId) {
+		    var tileset = this.getTilesetFromTuile(tileId);
+		    if (tileset) {
+                var iso = Utils.cartesianToIso(x, y, this.w()/2, this.h());
+		        return Tilesets.render(group, iso, tileId - tileset.firstgid, tileset.source);
+            }
+        },
+
         /**
          * Renvoi la tuile
          * @param tileId
          */
         getTile : function(tileId) {
             var tileset = this.getTilesetFromTuile(tileId);
-            if (tileset) return tileset.source.get(tileId-tileset.firstgid)
+            if (tileset)
+                return tileset.source.get(tileId-tileset.firstgid)
 		},
 
         /**
@@ -120,6 +135,9 @@ define(["app/data/tilesets"], function(Tilesets){
             return previousTileset;
         },
 
+        /**
+         * Taille de la map en tuile
+         */
         width : function() {
             return layers[0].width;
         },

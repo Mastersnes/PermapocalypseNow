@@ -1,20 +1,17 @@
 'use strict';
 define([], function(){
-	var data = [
+    var data = [
             {
                 "id" : 0,
             	"name" : "cailloux1",
-                "type":"elements"
             },
 			{
 				"id" : 1,
 				"name" : "cailloux2",
-				"type":"elements"
 			},
 			{
 				"id" : 2,
 				"name" : "cailloux3",
-				"type":"elements"
 			},
 	];
 	
@@ -29,9 +26,15 @@ define([], function(){
 		list : function() {
 			return data;
 		},
-		load : function(scene) {
-            scene.load.setBaseURL('app/img/game/tiles/elements');
-            scene.load.multiatlas('cailloux', 'cailloux/cailloux.json', 'cailloux');
-		}
+
+        /**
+         * Getters
+         */
+        type : function() {
+            return "elements";
+        },
+        name : function() {
+            return "cailloux";
+        }
 	};
 });

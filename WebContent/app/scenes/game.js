@@ -30,10 +30,9 @@ function($, Utils, SceneManager, Tilemap) {
 		this.preload = function(scene) {
             var camera = scene.cameras.main;
 
-            scene.load.setBaseURL('app/img/game');
+            scene.load.setBaseURL('app/img/game/');
 
-            scene.load.multiatlas('blocs', 'tiles/blocs/blocs.json', 'tiles/blocs');
-            scene.load.multiatlas('elements', 'tiles/elements/elements.json', 'tiles/elements');
+            Tilemap.load(scene);
 
             scene.load.image("hero", "personnages/hero.png");
 
@@ -51,9 +50,15 @@ function($, Utils, SceneManager, Tilemap) {
 
             camera.setBounds(-world.w/2, -10, world.w, world.h);
 
-            this.sceneManager.renderMap(scene, Tilemap);
+            var tilemap = this.sceneManager.renderMap(scene, Tilemap);
             
             this.hero = scene.physics.add.sprite(-400, 400, "hero");
+
+            for (var level in tilemap) {
+                if (level > 1) {
+                    scene.physics.add.collider(this.hero, tilemap[level]);
+                }
+            }
 
             this.makeEvents();
         };
@@ -98,9 +103,9 @@ function($, Utils, SceneManager, Tilemap) {
             });
             
             var zqsd = this.zqsd;
-            var speed = delta;
+            var speed = 200;
             var move = this.sceneManager.calculMove(controls.up, controls.down, controls.left, controls.right, speed);
-            this.sceneManager.move(Utils.cartesianToIso(move.x, move.y, speed, speed), this.hero);
+            this.sceneManager.move(move, this.hero);
         };
         
         this.render = function(scene) {

@@ -19,22 +19,14 @@ define(["app/utils/utils"],
              * @param tileset
              * @param id
              */
-            this.renderTile = function(scene, x, y, Tilemap, id) {
+            this.renderTile = function(group, x, y, Tilemap, id) {
                 var flipH = (id & this.FLIP_H_FLAG) != 0;
                 var flipV = (id & this.FLIP_V_FLAG) != 0;
                 // var flipD = id & this.FLIP_D_FLAG != 0;
 
                 id &= ~(this.FLIP_H_FLAG | this.FLIP_V_FLAG | this.FLIP_D_FLAG);
 
-                var tile = Tilemap.getTile(id);
-                if (!tile) return;
-
-                var w = tile.w!=undefined ? tile.w : Tilemap.w();
-                var h = tile.h!=undefined ? tile.h : Tilemap.h();
-
-                var iso = Utils.cartesianToIso(x, y, w/2, h);
-                var image = scene.add.sprite(iso.x, iso.y, tile.type, tile.name + ".png");
-
+                var image = Tilemap.renderTile(group, x, y, id);
                 image.flipX = flipH;
                 image.flipY = flipV;
             };
@@ -45,9 +37,11 @@ define(["app/utils/utils"],
              * @param map
              */
             this.renderMap = function(scene, Tilemap) {
+                var tilemap = [];
                 var map = Tilemap.list();
 
             	for (var layerId in map) {
+            	    var group = scene.physics.add.staticGroup();
                     var layer = map[layerId];
                     var x = 0; var y = 0;
 
@@ -55,14 +49,16 @@ define(["app/utils/utils"],
                         var tile = layer.data[tileId];
 
                         if (tile != 0)
-                            this.renderTile(scene, x, y, Tilemap, tile);
+                            this.renderTile(group, x, y, Tilemap, tile);
 
                         x++;
                         if (x>=layer.width) {
                             x=0; y++;
                         }
                     }
+                    tilemap.push(group);
                 }
+                return tilemap;
             };
 
             this.isDown = function(controls, scene, key, callback) {

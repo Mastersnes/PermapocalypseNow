@@ -1,10 +1,9 @@
 'use strict';
 define([], function(){
-	var data = [
+    var data = [
             {
                 "id" : 0,
             	"name" : "rocher1",
-                "type":"elements"
             },
 	];
 	
@@ -19,9 +18,15 @@ define([], function(){
 		list : function() {
 			return data;
 		},
-		load : function(scene) {
-            scene.load.setBaseURL('app/img/game/tiles/elements');
-            scene.load.multiatlas('rocher', 'rocher/rocher.json', 'rocher');
-		}
+
+        /**
+         * Getters
+         */
+        type : function() {
+            return "elements";
+        },
+        name : function() {
+            return "rocher";
+        }
 	};
 });

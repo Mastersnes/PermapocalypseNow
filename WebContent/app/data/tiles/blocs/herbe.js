@@ -1,35 +1,29 @@
 'use strict';
 define([], function(){
-	var data = [
+    var data = [
             {
                 "id":0,
             	"name" : "herb1",
-                "type":"blocs"
             },
             {
                 "id":5,
                 "name" : "herb2",
-                "type":"blocs"
             },
             {
                 "id":1,
                 "name" : "herb3",
-                "type":"blocs"
             },
 			{
                 "id":3,
 				"name" : "herb4",
-                "type":"blocs"
 			},
 			{
                 "id":4,
 				"name" : "herb5",
-                "type":"blocs"
 			},
 			{
                 "id":18,
 				"name" : "ter0",
-                "type":"blocs"
 			}
 	];
 	
@@ -44,9 +38,15 @@ define([], function(){
 		list : function() {
 			return data;
 		},
-		load : function(scene) {
-            scene.load.setBaseURL('app/img/game/tiles/blocs');
-            scene.load.multiatlas('herbe', 'herbe/herbe.json', 'herbe');
-		}
+
+        /**
+         * Getters
+         */
+        type : function() {
+            return "blocs";
+        },
+        name : function() {
+            return "herbe";
+        }
 	};
 });
